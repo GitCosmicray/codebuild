@@ -1,5 +1,5 @@
 # codebuild
-sample app for code build
+sample app for code builds
 # Hello World Web Application
 
 This is a simple web application that displays a "Hello, World!" message and includes a button that responds to user clicks.
