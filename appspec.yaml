@@ -1,0 +1,10 @@
+version: 0.0
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "my-web-app-cluster"
+        LoadBalancerInfo:
+          ContainerName: "my-web-app-container"
+          ContainerPort: 80
+

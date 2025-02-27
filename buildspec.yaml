@@ -17,11 +17,13 @@ phases:
 
   post_build:
     commands:
-      - echo "Pushing the image to Amazon ECR..."
-      - docker push 248189933829.dkr.ecr.us-west-2.amazonaws.com/$REPO_NAME:$IMAGE_TAG
       - echo "Creating imagedefinitions.json for CodeDeploy..."
       - printf '[{"name":"my-web-app-container","imageUri":"248189933829.dkr.ecr.us-west-2.amazonaws.com/%s:%s"}]' $REPO_NAME $IMAGE_TAG > imagedefinitions.json
-      - cat imagedefinitions.json  
+      - echo "Starting CodeDeploy Deployment..."
+      - aws deploy create-deployment --application-name my-web-app-deploy \
+        --deployment-group-name my-web-app-group \
+        --revision revisionType=AppSpecContent,appSpecContent="{\"version\":\"0.0\",\"Resources\":[{\"TargetService\":{\"Type\":\"AWS::ECS::Service\",\"Properties\":{\"TaskDefinition\":\"my-web-app-cluster\",\"LoadBalancerInfo\":{\"ContainerName\":\"my-web-app-container\",\"ContainerPort\":80}}}}]}" \
+        --region us-west-2 
 
 artifacts:
   files:
