@@ -16,7 +16,7 @@ pipeline {
 
         stage('Clone Repository') {
             steps {
-                git branch: 'main', url: 'https://github.com/GitCosmicray/gcp-cloud-functions.git'
+                git branch: 'main', url: 'https://github.com/GitCosmicray/codebuild.git'
             }
         }
 
