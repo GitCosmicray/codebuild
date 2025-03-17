@@ -77,13 +77,14 @@ pipeline {
                 script {
                     sh '''
                     gcloud functions deploy $FUNCTION_NAME \
-                        --runtime python312 \
                         --region $REGION \
                         --trigger-http \
                         --allow-unauthenticated \
-                        --source . \
+                        --memory 512MB \
+                        --gen2 \
+                        --runtime=python312 \
                         --entry-point main \
-                        --memory 512MB
+                        --source .
                     '''
                 }
             }
