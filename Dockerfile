@@ -1,4 +1,4 @@
-# Use an Nginx base image
+# Use an Nginx base image .
 FROM nginx:alpine
 
 # Copy website files to the default Nginx web root
