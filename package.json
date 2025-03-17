@@ -1,0 +1,9 @@
+{
+  "name": "static-web-function",
+  "version": "1.0.0",
+  "description": "Static Website served via Cloud Functions",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
